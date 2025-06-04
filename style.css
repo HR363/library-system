@@ -1,34 +1,35 @@
-
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(to right, #f0fdfa, #e0f7fa);
-  color: #2c3e50;
+  background: linear-gradient(to right, #0a1128, #001f54);
+  color: #e0e0e0;
+  min-height: 100vh; 
+  display: flex; 
+  overflow-x: hidden;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
+/* Sidebar layout */
+.main-layout {
+  display: flex; 
+  width: 100%;
 }
 
-header {
+.content-area { 
+  flex-grow: 1; 
+  padding: 40px; 
+  box-sizing: border-box; 
+}
+
+/* Section Specific Headers */
+.section-header-title {
+  color: #a7d9f7; 
+  font-size: 2em;
+  margin-bottom: 30px;
   text-align: center;
-  margin-bottom: 40px;
-}
-header h1 {
-  font-size: 2.5em;
-  background: linear-gradient(45deg, #00b894, #00cec9);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-header p {
-  color: #576574;
-  font-size: 1.1em;
+  font-weight: 600;
 }
 
-.grid {
+.content-grid { 
   display: grid;
   gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -36,17 +37,20 @@ header p {
 
 /* Cards */
 .card {
-  background: #ffffff;
+  background: #1c274c; 
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 8px 14px rgba(0,0,0,0.06);
-  border-left: 6px solid #00cec9;
+  box-shadow: 0 8px 14px rgba(0,0,0,0.3); 
+  border-left: 6px solid #66b3ff; 
 }
 
 .card h2 {
   margin-top: 0;
-  color: #00b894;
+  color: #a7d9f7; 
   font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
 }
 
 /* Forms */
@@ -59,12 +63,16 @@ form {
 input, select {
   padding: 12px;
   font-size: 1em;
-  border: 1px solid #ccc;
+  border: 1px solid #3d5a80; 
   border-radius: 8px;
-  background: #f9f9f9;
+  background: #0f1c3f;
+  color: #e0e0e0;
+}
+input::placeholder {
+  color: #a0a0a0;
 }
 button {
-  background: linear-gradient(to right, #00b894, #00cec9);
+  background: linear-gradient(to right, #3d5a80, #66b3ff);
   color: white;
   border: none;
   padding: 12px;
@@ -74,21 +82,21 @@ button {
   transition: background 0.3s ease;
 }
 button:hover {
-  background: linear-gradient(to right, #00cec9, #00b894);
+  background: linear-gradient(to right, #66b3ff, #3d5a80); 
 }
 
 button.return-btn {
   background-color: #f39c12;
 }
 button.return-btn:hover {
-  background-color: #e67e22;
+  background-color: #e67e22; 
 }
 
 button.delete-btn {
-  background-color: #7e180c;
+  background-color: #e74c3c;
 }
 button.delete-btn:hover {
-  background-color: #e62610;
+  background-color: #c0392b;
 }
 
 /* List containers */
@@ -98,13 +106,14 @@ button.delete-btn:hover {
   gap: 12px;
 }
 .member-item, .book-item, .borrow-item {
-  background: #f8f9fa;
-  border: 1px solid #e0e0e0;
+  background: #0f1c3f; 
+  border: 1px solid #3d5a80;
   padding: 15px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  color: #e0e0e0;
 }
 .member-info, .book-info, .borrow-info {
   flex-grow: 1;
@@ -114,25 +123,30 @@ button.delete-btn:hover {
   gap: 10px;
 }
 
-/* Borrow Details */
 .book-info i, .borrow-info i {
   margin-right: 6px;
+  color: #a7d9f7;
 }
 
+.borrow-info {
+  font-size: 0.95em;
+}
 .borrow-info {
   font-size: 0.95em;
 }
 
 .no-tasks {
   font-style: italic;
-  color: #888;
-  background: #ecf0f1;
+  color: #a0a0a0;
+  background: #1c274c;
   padding: 10px;
   border-radius: 6px;
   text-align: center;
+  margin-top: 20px;
+  display: none;
 }
 
-/* Borrow Form Row */
+/* Borrow Form  */
 .borrow-section form .form-row {
   display: flex;
   gap: 10px;
@@ -145,32 +159,62 @@ button.delete-btn:hover {
   }
 }
 
-/* Navbar */
+/* Navbar  */
 .navbar {
   display: flex;
-  background: linear-gradient(to right, #13153f, #394050);
-  justify-content: center;
-  padding: 10px 0;
+  flex-direction: column; 
+  background: #001f54;
+  padding: 20px 10px; 
+  width: 250px; 
+  min-height: 100vh;
+  box-shadow: 4px 0 8px rgba(0,0,0,0.3); 
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 10;
+  align-items: flex-start;
 }
+
+.navbar-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px 0;
+  color: #e0e0e0;
+}
+
+.navbar-header h2 {
+  font-size: 1.8em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.navbar-header p {
+  font-size: 0.9em;
+  margin: 5px 0 0 0;
+  color: #a0a0a0;
+}
+
 
 .nav-link {
   background: none;
   border: none;
-  color: white;
+  color: #a7d9f7; 
   font-size: 1em;
-  margin: 0 20px;
-  padding: 10px;
+  margin: 10px 0; 
+  padding: 12px 15px;
   cursor: pointer;
   font-weight: bold;
   transition: background 0.3s;
+  width: 100%; 
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
 }
 
 .nav-link:hover,
 .nav-link.active {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(167, 217, 247, 0.15); 
   border-radius: 8px;
 }
 
@@ -182,3 +226,40 @@ button.delete-btn:hover {
   display: block;
 }
 
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column; 
+  }
+
+  .navbar {
+    width: 100%; 
+    min-height: auto;
+    flex-direction: row; 
+    justify-content: space-around; 
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+    position: relative; 
+  }
+
+  .navbar-header {
+    display: none; 
+  }
+
+  .nav-link {
+    margin: 0 5px;
+    padding: 8px 10px;
+    text-align: center;
+    gap: 5px;
+    flex-grow: 1; 
+  }
+
+  .content-area {
+    padding: 20px; 
+  }
+
+  .section-header-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+}

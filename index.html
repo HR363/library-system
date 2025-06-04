@@ -5,72 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Library Management System</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-    <nav class="navbar">
-    <button class="nav-link active" onclick="showSection('members')"><i class="fas fa-users"></i> Members</button>
-    <button class="nav-link" onclick="showSection('books')"><i class="fas fa-book"></i> Books</button>
-    <button class="nav-link" onclick="showSection('borrow')"><i class="fas fa-exchange-alt"></i> Borrow/Return</button>
-  </nav>
+    <div class="main-layout">
+        <nav class="navbar">
+            <div class="navbar-header">
+                <h2><i class="fas fa-book-reader"></i> Library <br> Manager</h2>
+                <p>Digital Management</p>
+            </div>
+            <button class="nav-link active" onclick="showSection('members')"><i class="fas fa-users"></i> Members</button>
+            <button class="nav-link" onclick="showSection('books')"><i class="fas fa-book"></i> Books</button>
+            <button class="nav-link" onclick="showSection('borrow')"><i class="fas fa-exchange-alt"></i> Borrow/Return</button>
+        </nav>
 
-  <div class="container">
-    <header>
-      <h1><i class="fas fa-book-reader"></i> Library Manager</h1>
-      <p>Manage members, books, borrowing, and returns effortlessly.</p>
-    </header>
-    <section id="members" class="section active">
-      <div class="card">
-        <h2><i class="fas fa-user-plus"></i> Member Management</h2>
-        <form id="memberForm">
-          <input type="text" id="memberName" placeholder="Full Name" required />
-          <input type="email" id="memberEmail" placeholder="Email Address" required />
-          <button type="submit"><i class="fas fa-plus"></i> Add Member</button>
-        </form>
-        <div id="memberList" class="list-container"></div>
-      </div>
-    </section>
+        <div class="content-area">
+            <section id="members" class="section active">
+                <h2 class="section-header-title">Manage library members and their information</h2>
+                <div class="content-grid grid"> <div class="card">
+                        <h2><i class="fas fa-user-plus"></i> Add New Member</h2>
+                        <form id="memberForm">
+                            <input type="text" id="memberName" placeholder="Full Name" required />
+                            <input type="email" id="memberEmail" placeholder="Email Address" required />
+                            <button type="submit"><i class="fas fa-plus"></i> Add Member</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2><i class="fas fa-users"></i> Member List</h2>
+                        <div id="memberList" class="list-container"></div>
+                        <div id="noMembersYet" class="no-tasks">No members added yet</div>
+                    </div>
+                </div>
+            </section>
 
-    <!-- BOOKS -->
-    <section id="books" class="section">
-      <div class="card">
-        <h2><i class="fas fa-book"></i> Book Management</h2>
-        <form id="bookForm">
-          <input type="text" id="bookTitle" placeholder="Book Title" required />
-          <input type="text" id="bookAuthor" placeholder="Author Name" required />
-          <button type="submit"><i class="fas fa-plus"></i> Add Book</button>
-        </form>
-        <div id="bookList" class="list-container"></div>
-      </div>
-    </section>
+            <section id="books" class="section">
+                <h2 class="section-header-title">Organize and track your book inventory</h2>
+                <div class="content-grid grid"> <div class="card">
+                        <h2><i class="fas fa-book-medical"></i> Add New Book</h2>
+                        <form id="bookForm">
+                            <input type="text" id="bookTitle" placeholder="Book Title" required />
+                            <input type="text" id="bookAuthor" placeholder="Author Name" required />
+                            <button type="submit"><i class="fas fa-plus"></i> Add Book</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2><i class="fas fa-book"></i> Book Collection</h2>
+                        <div id="bookList" class="list-container"></div>
+                        <div id="noBooksYet" class="no-tasks">No books added yet</div>
+                    </div>
+                </div>
+            </section>
 
-    <section id="borrow" class="section">
-      <div class="card">
-        <h2><i class="fas fa-exchange-alt"></i> Borrow & Return Books</h2>
-        <form id="borrowForm">
-          <div class="form-row">
-            <label for="borrowMember" class="visually-hidden">Select Member</label>
-            <select id="borrowMember" required></select>
-            <label for="borrowBook" class="visually-hidden">Select Book</label>
-            <select id="borrowBook" required></select>
-            <button type="submit"><i class="fas fa-book-medical"></i> Borrow Book</button>
-          </div>
-        </form>
-
-        <h3 style="margin-top: 20px;">Currently Borrowed Books</h3>
-        <div id="borrowedList" class="borrowed-container"></div>
-      </div>
-    </section>
-  </div>
+            <section id="borrow" class="section">
+                <h2 class="section-header-title">Handle book borrowing and returns</h2>
+                <div class="content-grid grid"> <div class="card">
+                        <h2><i class="fas fa-exchange-alt"></i> Borrow a Book</h2>
+                        <form id="borrowForm">
+                            <div class="form-row">
+                                <label for="borrowMember" class="visually-hidden">Select Member</label>
+                                <select id="borrowMember" required></select>
+                                <label for="borrowBook" class="visually-hidden">Select Book</label>
+                                <select id="borrowBook" required></select>
+                                <button type="submit"><i class="fas fa-book-medical"></i> Borrow Book</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h2><i class="fas fa-history"></i> Currently Borrowed Books</h2>
+                        <div id="borrowedList" class="borrowed-container"></div>
+                        <div id="noBorrowedYet" class="no-tasks">No books currently borrowed</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
   <script>
     function showSection(id) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
       document.getElementById(id).classList.add('active');
-      event.target.classList.add('active');
+      const clickedButton = Array.from(document.querySelectorAll('.nav-link')).find(btn => btn.onclick.toString().includes(`'${id}'`));
+      if (clickedButton) {
+          clickedButton.classList.add('active');
+      }
+
+      const sections = ['members', 'books', 'borrow'];
+      sections.forEach(secId => {
+          const listElement = document.getElementById(secId === 'borrow' ? 'borrowedList' : secId + 'List');
+          const noTasksElement = document.getElementById(secId === 'borrow' ? 'noBorrowedYet' : 'no' + secId.charAt(0).toUpperCase() + secId.slice(1) + 'Yet');
+
+          if (noTasksElement) { // Check if the element exists
+              if (listElement && listElement.children.length === 0) {
+                  noTasksElement.style.display = 'block';
+              } else if (noTasksElement) {
+                  noTasksElement.style.display = 'none';
+              }
+          }
+      });
     }
+
+    // Call showSection for the initially active section on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        showSection('members'); // Set 'members' as the default active section on load
+    });
   </script>
   <script src="dist/bundle.js"></script>
 </body>
