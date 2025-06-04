@@ -1,0 +1,14 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "description": "A browser-based Library Management System using TypeScript, HTML, and CSS.",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "esbuild src/Frontend.ts --bundle --outfile=dist/bundle.js",
+    "start": "npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "typescript": "^5.0.0"
+  }
+}

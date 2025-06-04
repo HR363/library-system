@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <nav class="navbar">
+    <button class="nav-link active" onclick="showSection('members')"><i class="fas fa-users"></i> Members</button>
+    <button class="nav-link" onclick="showSection('books')"><i class="fas fa-book"></i> Books</button>
+    <button class="nav-link" onclick="showSection('borrow')"><i class="fas fa-exchange-alt"></i> Borrow/Return</button>
+  </nav>
+
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-book-reader"></i> Library Manager</h1>
+      <p>Manage members, books, borrowing, and returns effortlessly.</p>
+    </header>
+    <section id="members" class="section active">
+      <div class="card">
+        <h2><i class="fas fa-user-plus"></i> Member Management</h2>
+        <form id="memberForm">
+          <input type="text" id="memberName" placeholder="Full Name" required />
+          <input type="email" id="memberEmail" placeholder="Email Address" required />
+          <button type="submit"><i class="fas fa-plus"></i> Add Member</button>
+        </form>
+        <div id="memberList" class="list-container"></div>
+      </div>
+    </section>
+
+    <!-- BOOKS -->
+    <section id="books" class="section">
+      <div class="card">
+        <h2><i class="fas fa-book"></i> Book Management</h2>
+        <form id="bookForm">
+          <input type="text" id="bookTitle" placeholder="Book Title" required />
+          <input type="text" id="bookAuthor" placeholder="Author Name" required />
+          <button type="submit"><i class="fas fa-plus"></i> Add Book</button>
+        </form>
+        <div id="bookList" class="list-container"></div>
+      </div>
+    </section>
+
+    <section id="borrow" class="section">
+      <div class="card">
+        <h2><i class="fas fa-exchange-alt"></i> Borrow & Return Books</h2>
+        <form id="borrowForm">
+          <div class="form-row">
+            <label for="borrowMember" class="visually-hidden">Select Member</label>
+            <select id="borrowMember" required></select>
+            <label for="borrowBook" class="visually-hidden">Select Book</label>
+            <select id="borrowBook" required></select>
+            <button type="submit"><i class="fas fa-book-medical"></i> Borrow Book</button>
+          </div>
+        </form>
+
+        <h3 style="margin-top: 20px;">Currently Borrowed Books</h3>
+        <div id="borrowedList" class="borrowed-container"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+  <script src="dist/bundle.js"></script>
+</body>
+</html>
